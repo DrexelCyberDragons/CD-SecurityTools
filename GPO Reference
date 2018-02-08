@@ -1,0 +1,130 @@
+GPO backup with the settings below
+Right click on Default Domain Policy and click Import Settings…
+	- Be sure to remap some settings to map to local domain - e.g. Domain Admins@cyberdragons.edu
+	
+
+Computer Configuration/Policies/WindowsSettings/SecuritySettings…
+	
+/Account Policies/Account Lockout Policy
+	Account lockout duration 5 minutes
+	Account lockout threshold 10 invalid logon attempts 
+	Reset account lockout counter after 5 minutes 
+	
+/Account Policies/Kerberos Policy
+ 
+	Enforce user logon restrictions Enabled
+	Maximum lifetime for service ticket 600 minutes
+	Maximum lifetime for user ticket 10 hours
+	Maximum lifetime for user ticket renewal 7 days 
+	Maximum tolerance for computer clock synchronization 5 minutes 
+	
+/Local Policies/Audit Policy
+	Audit account logon events Success, Failure
+	Audit account management Success, Failure
+	Audit directory service access Success, Failure
+	Audit logon events Success, Failure
+	Audit object access Success, Failure
+	Audit policy change Success, Failure
+	Audit privilege use Success, Failure
+	Audit process tracking None
+	Audit system events None
+	
+/Local Policies/Security Options/User Rights Assignment
+ 
+	Deny access to the computer from the network: Guest, Local account, Local account and member of Administrators group
+			
+	
+/Local Policies/Security Options
+	Accounts: Local Administrator account status Disabled
+	Accounts: Local Guest account status Disabled
+	Accounts: Limit local account use of blank passwords to console logon only Enabled
+	Accounts: Rename administrator account “ludwig”
+	Accounts: Rename guest account "yoo"
+	Accounts: Block Microsoft Accounts Enabled
+	Domain member: Digitally encrypt secure channel data (when possible) Enabled
+	Domain member: Digitally sign secure channel data (when possible) Enabled
+	Domain member: Disable machine account password changes Disabled
+	Domain member: Maximum machine account password age 30 days
+	Domain member: Require strong (Windows 2000 or later) session key Enabled
+	Interactive logon: Message title for users attempting to log on: GPO MSG
+	Interactive logon: Message text for users attempting to log on: GPO APP
+	Interactive logon: Number of Previous logons to cache 1
+	Microsoft network client: Digitally sign communications (if server agrees) Enabled
+	Microsoft network client: Send unencrypted password to third-party SMB servers Disabled
+	Network security: LAN Manager auth. lvl Send NTLMv2 response only\refuse NTLM & LM
+	Network security: Do not store LAN Manager hash value on next password chg Enabled
+	Restrict NTLM: Incoming Traffic Enable
+	Network access: Do not allow anon enumeration of SAM accounts and shares Enabled
+	Network access: Do not allow anon enumeration of SAM accounts Enabled
+	 Network Access: Remotely Accessible Registry paths and sub paths Disabled 
+	Network access: Allow anon SID/name translation Disabled 
+	Network Access: Let everyone permissions apply to anonymous users: Disabled
+
+/Event Log
+ 
+	Prevent local guests group from accessing application log Enabled 
+	Prevent local guests group from accessing security log Enabled 
+	Prevent local guests group from accessing system log Enabled
+ 
+/System Services
+	WinHTTP Web Proxy Autoconfiguration - Disabled
+	
+/Windows Firewall with Advanced Security
+	Enforce default settings (Inbound connections not matching a rule blocked/outbound allowed)
+		○ Policy allows local policies to be created/applied
+		○ Logs all allowed and blocked connections
+	
+/Application Control Policies/AppLocker/Script Rules
+	Deny any scripts running from %OSDRIVE%\Users\* Directory
+	
+/Advanced Audit Policy Configuration
+	Enforce a number of settings for logging Success/Failure under
+		○ Account Management
+		○ Logon/Logoff
+		○ Policy Change
+		○ System
+
+Administrative Templates
+/Network/DNSClient
+	Turn off Multicast Name Resolution – set to enabled
+
+/System/GroupPolicy
+r
+	Group Policy refresh interval for computers 5min / 5min
+	Group Policy refresh interval for domain controllers 5min / 0 min
+	Configure Security Policy Processing - Enabled and Process even if no changes
+
+/Windows Components/Windows Update
+	Configure Automatic Updates - Autodownload and Notify
+	(optional - if needed/desired) Specify intranet Microsoft update service location - http://192.168.9.13:8530 for both
+	
+/Windows Components/Remote Desktop Services/Remote Desktop Session Host\Sec.
+	Set client connection encryption level Client Compatible
+
+
+	
+	
+Computer Configuration/Policies/Preferences/Windows Settings
+/Registry
+	Disable SMBv1
+	Registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters
+	Registry entry: SMB1
+	REG_DWORD: 0 = Disabled
+	REG_DWORD: 1 = Enabled
+
+	Disable WPAD
+	Disable WPAD via Group Policy by deploying the following:
+	HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Wpad
+	New DWORD (32-Bit Value) called “WpadOverride” and set to “1”
+
+	Cleartext storage of creds:
+	HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\WDigest
+	· If the UseLogonCredential value is set to 0, WDigest will not store credentials in memory.
+	· If the UseLogonCredential value is set to 1, WDigest will store credentials in memory.
+	
+	**Requires some patches be installed
+		○ 2984972 for supported editions of Windows 7 and Windows Server 2008 R2
+		○ 2984976 for supported editions of Windows 7 and Windows Server 2008 R2 that have update 2592687 (Remote Desktop Protocol (RDP) 8.0 update) installed. Customers who install update 2984976 must also install update 2984972.
+		○ 2984981 for supported editions of Windows 7 and Windows Server 2008 R2 that have update 2830477 (Remote Desktop Connection (RDC) 8.1 client update) installed. Customers who install update 2984981 must also install update 2984972.
+		○ 2973501 for supported editions of Windows 8, Windows Server 2012, and Windows RT.
+		From <https://docs.microsoft.com/en-us/security-updates/SecurityAdvisories/2016/2871997> 
