@@ -1,4 +1,6 @@
 # CD-SecurityTools
+## Publically available NoteBook
+https://1drv.ms/u/s!ApMrBTfi0gMMhfxnx6kTIpskw3dBHA
 
 ## Windows tools
 
