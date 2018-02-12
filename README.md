@@ -8,6 +8,7 @@ Defender definition updates: https://www.microsoft.com/en-us/wdsi/definitions
 
 Avira download and definitions and WSUS Offline patch bundles: https://1drv.ms/f/s!ApMrBTfi0gMMht0tzbaWd7aZVAUxDw
 Avira official download: https://package.avira.com/package/oeavira/win/int/avira_en_av_5a7f67bb4f04c__ws.exe
+Avira Offline Update Tool: https://www.avira.com/en/support-vdf-update-info
 
 ### Critical Patches
 MS08-067 - https://www.catalog.update.microsoft.com/Search.aspx?q=MS08-067
