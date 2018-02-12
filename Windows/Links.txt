@@ -1,0 +1,30 @@
+Password Reset Page 
+Apache Syncope? 
+https://syncope.apache.org/docs/getting-started.html 
+https://syncope.apache.org/docs/getting-started.html#moving-forward  !!!!! 
+http://syncope.apache.org/docs/reference-guide.html#admin-console 
+Default admin password is "password" 
+http://syncope.apache.org/docs/reference-guide.html#set-admin-credentials 
+https://syncope.apache.org/security.html 
+Requires a DBMS: 
+- PostgreSQL 
+- MariaDB 
+- MySQL 
+- Oracle Database 
+- MS SQL Server 
+http://syncope.apache.org/docs/reference-guide.html#delegated-administration 
+http://syncope.apache.org/docs/reference-guide.html#apache-tomcat-8-and-8-5 
+Active Directory Connectors (ConnID): 
+.NET: https://connid.atlassian.net/wiki/spaces/BASE/pages/360517/Active+Directory 
+Java: https://connid.atlassian.net/wiki/spaces/BASE/pages/360482/Active+Directory+JNDI 
+
+
+
+Tomcat
+http://tomcat.apache.org/tomcat-8.0-doc/security-manager-howto.html 
+http://tomcat.apache.org/tomcat-8.0-doc/manager-howto.html#Supported_Manager_Commands 
+http://tomcat.apache.org/tomcat-8.0-doc/logging.html 
+http://tomcat.apache.org/tomcat-8.0-doc/security-howto.html 
+https://www.owasp.org/index.php/Securing_tomcat#Windows 
+https://geekflare.com/apache-tomcat-hardening-and-security-guide/ 
+ 
